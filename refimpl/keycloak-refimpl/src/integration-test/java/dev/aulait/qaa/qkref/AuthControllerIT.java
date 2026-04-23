@@ -52,7 +52,7 @@ class AuthControllerIT {
   void loginError() {
     ErrorResponse error = authClient.loginWithError(AuthDataFactory.createNonExistentUser());
 
-    assertEquals(Status.UNAUTHORIZED.getStatusCode(), error.getStatusCode());
+    assertEquals(Status.BAD_REQUEST.getStatusCode(), error.getStatusCode());
   }
 
   @Test

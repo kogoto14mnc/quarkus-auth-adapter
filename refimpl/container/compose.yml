@@ -1,7 +1,7 @@
 services:
   keycloak:
     command: start-dev
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:26.6.1
     environment:
       FRONTEND_URL: http://localhost:${FRONTEND_PORT}
       KEYCLOAK_ADMIN: ${AUTH_USER}

@@ -57,7 +57,7 @@
 
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.20.0</quarkus.platform.version>
+    <quarkus.platform.version>3.33.1</quarkus.platform.version>
 
     <smtp.web.port>8025</smtp.web.port>
 
