@@ -1,6 +1,5 @@
-package dev.aulait.qaa.qkref;
+package dev.aulait.qaa.api;
 
-import dev.aulait.qaa.api.ErrorResponse;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;

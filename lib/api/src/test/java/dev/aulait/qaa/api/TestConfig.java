@@ -1,4 +1,4 @@
-package dev.aulait.qaa.qkref;
+package dev.aulait.qaa.api;
 
 import java.util.Optional;
 import lombok.Getter;

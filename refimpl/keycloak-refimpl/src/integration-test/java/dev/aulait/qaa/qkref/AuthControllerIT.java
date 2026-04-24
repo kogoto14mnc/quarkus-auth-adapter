@@ -3,8 +3,11 @@ package dev.aulait.qaa.qkref;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import dev.aulait.qaa.api.AuthClient;
 import dev.aulait.qaa.api.ErrorResponse;
 import dev.aulait.qaa.api.LoginResponse;
+import dev.aulait.qaa.api.RestrictedClient;
+import dev.aulait.qaa.api.TestConfig;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 import jakarta.ws.rs.core.Response.Status;
 import org.junit.jupiter.api.Test;
@@ -13,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class AuthControllerIT {
 
   AuthClient authClient = new AuthClient();
-  RestrictedClient restrictedClient = new RestrictedClient(authClient.getClient());
+  RestrictedClient restrictedClient = new RestrictedClient(authClient.getClient(), "/restricted");
 
   @Test
   void restrictedAccess() {

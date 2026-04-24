@@ -1,10 +1,7 @@
-package dev.aulait.qaa.qkref;
+package dev.aulait.qaa.api;
 
 import static dev.aulait.qaa.api.AuthController.*;
 
-import dev.aulait.qaa.api.ErrorResponse;
-import dev.aulait.qaa.api.LoginRequest;
-import dev.aulait.qaa.api.LoginResponse;
 import io.restassured.response.Response;
 import jakarta.ws.rs.core.Response.Status;
 import lombok.Getter;
