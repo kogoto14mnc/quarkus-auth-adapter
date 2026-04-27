@@ -13,6 +13,10 @@
     <relativePath>../../</relativePath>
   </parent>
 
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
+
   <build>
     <resources>
       <resource>
@@ -71,7 +75,7 @@
                 </goals>
                 <configuration>
                   <executable>pnpm</executable>
-                  <commandlineArgs>playwright install</commandlineArgs>
+                  <commandlineArgs>playwright-install</commandlineArgs>
                 </configuration>
               </execution>
               <execution>

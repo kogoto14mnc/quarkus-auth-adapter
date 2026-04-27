@@ -12,6 +12,10 @@
     <relativePath>../../</relativePath>
   </parent>
 
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
+
   <build>
     <resources>
       <resource>
@@ -57,6 +61,25 @@
 
       <build>
         <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>fix-eol</id>
+                <phase>prepare-package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <fixcrlf srcdir="${project.build.directory}/kcadm" eol="lf"
+                      includes="**/*.sh,**/*.csv,**/*.env,**/*.json" />
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
