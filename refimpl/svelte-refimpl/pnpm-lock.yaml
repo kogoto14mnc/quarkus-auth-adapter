@@ -20,10 +20,10 @@ importers:
         version: 9.32.0
       '@sveltejs/adapter-auto':
         specifier: ^6.0.1
-        version: 6.0.1(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(typescript@5.9.3)(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))
+        version: 6.0.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))
       '@sveltejs/kit':
-        specifier: ^2.58.0
-        version: 2.58.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(typescript@5.9.3)(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
+        specifier: ^2.26.1
+        version: 2.26.1(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.1.0
         version: 6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
@@ -457,9 +457,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@standard-schema/spec@1.1.0':
-    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
   '@sveltejs/acorn-typescript@1.0.5':
     resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
     peerDependencies:
@@ -470,21 +467,14 @@ packages:
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
 
-  '@sveltejs/kit@2.58.0':
-    resolution: {integrity: sha512-kT9GCN8yJTkCK1W+Gi/bvGooWAM7y7WXP+yd+rf6QOIjyoK1ERPrMwSufXJUNu2pMWIqruhFvmz+LbOqsEmKmA==}
+  '@sveltejs/kit@2.26.1':
+    resolution: {integrity: sha512-FwDhHAoXYUGnYndrrEzEYcKdYWpSoRKq4kli29oMe83hLri4/DOGQk3xUgwjDo0LKpSmj5M/Sj29/Ug3wO0Cbg==}
     engines: {node: '>=18.13'}
     hasBin: true
     peerDependencies:
-      '@opentelemetry/api': ^1.0.0
-      '@sveltejs/vite-plugin-svelte': ^3.0.0 || ^4.0.0-next.1 || ^5.0.0 || ^6.0.0-next.0 || ^7.0.0
+      '@sveltejs/vite-plugin-svelte': ^3.0.0 || ^4.0.0-next.1 || ^5.0.0 || ^6.0.0-next.0
       svelte: ^4.0.0 || ^5.0.0-next.0
-      typescript: ^5.3.3 || ^6.0.0
-      vite: ^5.0.3 || ^6.0.0 || ^7.0.0-beta.0 || ^8.0.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-      typescript:
-        optional: true
+      vite: ^5.0.3 || ^6.0.0 || ^7.0.0-beta.0
 
   '@sveltejs/vite-plugin-svelte-inspector@5.0.0':
     resolution: {integrity: sha512-iwQ8Z4ET6ZFSt/gC+tVfcsSBHwsqc6RumSaiLUkAurW3BCpJam65cmHw0oOlDMTO0u+PZi9hilBRYN+LZNHTUQ==}
@@ -736,6 +726,9 @@ packages:
 
   destr@2.0.5:
     resolution: {integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==}
+
+  devalue@5.1.1:
+    resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
 
   devalue@5.7.1:
     resolution: {integrity: sha512-MUbZ586EgQqdRnC4yDrlod3BEdyvE4TapGYHMW2CiaW+KkkFmWEFqBUaLltEZCGi0iFXCEjRF0OjF0DV2QHjOA==}
@@ -1222,8 +1215,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  set-cookie-parser@3.1.0:
-    resolution: {integrity: sha512-kjnC1DXBHcxaOaOXBHBeRtltsDG2nUiUni+jP92M9gYdW12rsmx92UsfpH7o5tDRs7I1ZZPSQJQGv3UaRfCiuw==}
+  set-cookie-parser@2.7.1:
+    resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -1727,35 +1720,31 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.46.1':
     optional: true
 
-  '@standard-schema/spec@1.1.0': {}
-
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.15.0)':
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/adapter-auto@6.0.1(@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(typescript@5.9.3)(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))':
+  '@sveltejs/adapter-auto@6.0.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))':
     dependencies:
-      '@sveltejs/kit': 2.58.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(typescript@5.9.3)(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
+      '@sveltejs/kit': 2.26.1(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
 
-  '@sveltejs/kit@2.58.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(typescript@5.9.3)(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))':
+  '@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))':
     dependencies:
-      '@standard-schema/spec': 1.1.0
       '@sveltejs/acorn-typescript': 1.0.5(acorn@8.15.0)
       '@sveltejs/vite-plugin-svelte': 6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))
       '@types/cookie': 0.6.0
       acorn: 8.15.0
       cookie: 0.6.0
-      devalue: 5.7.1
+      devalue: 5.1.1
       esm-env: 1.2.2
       kleur: 4.1.5
       magic-string: 0.30.17
       mrmime: 2.0.1
-      set-cookie-parser: 3.1.0
+      sade: 1.8.1
+      set-cookie-parser: 2.7.1
       sirv: 3.0.1
       svelte: 5.55.4(@typescript-eslint/types@8.59.0)
       vite: 7.3.2(jiti@2.6.1)(yaml@2.8.3)
-    optionalDependencies:
-      typescript: 5.9.3
 
   '@sveltejs/vite-plugin-svelte-inspector@5.0.0(@sveltejs/vite-plugin-svelte@6.1.0(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3)))(svelte@5.55.4(@typescript-eslint/types@8.59.0))(vite@7.3.2(jiti@2.6.1)(yaml@2.8.3))':
     dependencies:
@@ -2014,6 +2003,8 @@ snapshots:
   defu@6.1.7: {}
 
   destr@2.0.5: {}
+
+  devalue@5.1.1: {}
 
   devalue@5.7.1: {}
 
@@ -2486,7 +2477,7 @@ snapshots:
 
   semver@7.7.4: {}
 
-  set-cookie-parser@3.1.0: {}
+  set-cookie-parser@2.7.1: {}
 
   shebang-command@2.0.0:
     dependencies:
