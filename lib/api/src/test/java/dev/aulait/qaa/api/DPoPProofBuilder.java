@@ -13,6 +13,7 @@ import java.util.UUID;
 public class DPoPProofBuilder {
 
   private final KeyPair keyPair;
+  private String fixedJti;
 
   public DPoPProofBuilder() {
     try {
@@ -22,6 +23,14 @@ public class DPoPProofBuilder {
     } catch (Exception e) {
       throw new RuntimeException("Failed to generate EC key pair", e);
     }
+  }
+
+  public void setFixedJti(String jti) {
+    this.fixedJti = jti;
+  }
+
+  public void clearFixedJti() {
+    this.fixedJti = null;
   }
 
   public String buildProof(String htm, String htu, String accessToken, String nonce) {
@@ -65,7 +74,8 @@ public class DPoPProofBuilder {
 
   private String buildPayload(String htm, String htu, String accessToken, String nonce) {
     StringBuilder sb = new StringBuilder();
-    sb.append("{\"jti\":\"").append(UUID.randomUUID()).append("\"");
+    String jti = fixedJti != null ? fixedJti : UUID.randomUUID().toString();
+    sb.append("{\"jti\":\"").append(jti).append("\"");
     sb.append(",\"htm\":\"").append(htm).append("\"");
     sb.append(",\"htu\":\"").append(htu).append("\"");
     sb.append(",\"iat\":").append(System.currentTimeMillis() / 1000);

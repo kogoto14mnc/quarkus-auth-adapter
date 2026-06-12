@@ -11,6 +11,7 @@ import dev.aulait.qaa.api.LoginResponse;
 import dev.aulait.qaa.api.MeResponse;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 import java.net.http.HttpResponse;
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 @QuarkusIntegrationTest
@@ -109,5 +110,37 @@ class DPoPAuthControllerIT {
     assertNull(me.getFirstName());
     assertNull(me.getLastName());
     assertNull(me.getRoles());
+  }
+
+  @Test
+  void dpopJtiReplayRejected() {
+    DPoPAuthClient client = new DPoPAuthClient();
+    client.login(AuthDataFactory.createProvider1());
+
+    String fixedJti = UUID.randomUUID().toString();
+
+    // First request with this jti should succeed
+    HttpResponse<String> first = client.getRestrictedWithFixedJti(fixedJti);
+    assertEquals(200, first.statusCode());
+
+    // Second request with the same jti should be rejected as replay
+    HttpResponse<String> second = client.getRestrictedWithFixedJti(fixedJti);
+    assertEquals(401, second.statusCode());
+
+    String wwwAuth = second.headers().firstValue("WWW-Authenticate").orElse("");
+    assertTrue(wwwAuth.contains("invalid_dpop_proof"), "Expected invalid_dpop_proof error");
+  }
+
+  @Test
+  void dpopDifferentJtiAccepted() {
+    DPoPAuthClient client = new DPoPAuthClient();
+    client.login(AuthDataFactory.createProvider1());
+
+    // Two requests with different jti values should both succeed
+    HttpResponse<String> first = client.getRestrictedWithFixedJti(UUID.randomUUID().toString());
+    assertEquals(200, first.statusCode());
+
+    HttpResponse<String> second = client.getRestrictedWithFixedJti(UUID.randomUUID().toString());
+    assertEquals(200, second.statusCode());
   }
 }
