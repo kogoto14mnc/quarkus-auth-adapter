@@ -24,6 +24,8 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @Priority(Priorities.AUTHENTICATION + 1)
 public class DPoPJtiFilter implements ContainerRequestFilter {
 
+  private static final String USED_JTI_MARKER = "used";
+
   @ConfigProperty(name = "qaa.dpop.nonce-ttl-seconds")
   long nonceTtlSeconds;
 
@@ -51,15 +53,13 @@ public class DPoPJtiFilter implements ContainerRequestFilter {
     }
 
     String jtiHash = hashJti(jti);
-    if (usedJtis.getIfPresent(jtiHash) != null) {
+  if (USED_JTI_MARKER.equals(usedJtis.asMap().putIfAbsent(jtiHash, USED_JTI_MARKER))) {
       requestContext.abortWith(
           Response.status(Response.Status.UNAUTHORIZED)
               .header("WWW-Authenticate",
                   "DPoP error=\"invalid_dpop_proof\", error_description=\"DPoP proof replay detected\"")
               .build());
-      return;
     }
-    usedJtis.put(jtiHash, "used");
   }
 
   private String extractJti(String dpopJwt) {
