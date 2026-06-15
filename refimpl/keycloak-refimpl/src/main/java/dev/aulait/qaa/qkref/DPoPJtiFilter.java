@@ -1,5 +1,7 @@
 package dev.aulait.qaa.qkref;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
@@ -10,8 +12,6 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.Provider;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -35,9 +35,7 @@ public class DPoPJtiFilter implements ContainerRequestFilter {
 
   @PostConstruct
   void init() {
-    usedJtis = Caffeine.newBuilder()
-        .expireAfterWrite(nonceTtlSeconds, TimeUnit.SECONDS)
-        .build();
+    usedJtis = Caffeine.newBuilder().expireAfterWrite(nonceTtlSeconds, TimeUnit.SECONDS).build();
   }
 
   @Override
@@ -53,11 +51,13 @@ public class DPoPJtiFilter implements ContainerRequestFilter {
     }
 
     String jtiHash = hashJti(jti);
-  if (USED_JTI_MARKER.equals(usedJtis.asMap().putIfAbsent(jtiHash, USED_JTI_MARKER))) {
+    if (USED_JTI_MARKER.equals(usedJtis.asMap().putIfAbsent(jtiHash, USED_JTI_MARKER))) {
       requestContext.abortWith(
           Response.status(Response.Status.UNAUTHORIZED)
-              .header("WWW-Authenticate",
-                  "DPoP error=\"invalid_dpop_proof\", error_description=\"DPoP proof replay detected\"")
+              .header(
+                  "WWW-Authenticate",
+                  "DPoP error=\"invalid_dpop_proof\", error_description=\"DPoP proof replay"
+                      + " detected\"")
               .build());
     }
   }
