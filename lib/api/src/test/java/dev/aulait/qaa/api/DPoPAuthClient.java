@@ -109,6 +109,15 @@ public class DPoPAuthClient {
     return response;
   }
 
+  public HttpResponse<String> getRestrictedWithFixedJti(String jti) {
+    proofBuilder.setFixedJti(jti);
+    try {
+      return getRestricted();
+    } finally {
+      proofBuilder.clearFixedJti();
+    }
+  }
+
   public HttpResponse<String> getRestrictedWithoutProof() {
     @SuppressWarnings("unchecked")
     HttpResponse<String> response =
